@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>game</title>
+</head>
+<body>
+<h1> Deck Of Cards Game </h1>
+<script type="text/javascript">
+    function btnActivation(textId, buttonId){
+        if(!document.getElementById(textId).value.length){
+            document.getElementById(buttonId).disabled = true;
+        }else{
+            document.getElementById(buttonId).disabled = false;
+        }
+    }
+</script>
+<form action="rest/createGame" method="GET">
+    Create a new Game: <input type="submit" value="create" />
+</form>
+<br>
+<form action="rest/deleteGame" method="POST">
+    Game Id: <input id="gameIdVal" type="text" name="gameId"  onkeyup="btnActivation('gameIdVal','deleteButton')">
+    <input type="submit" value="deleteGame" id="deleteButton" disabled/>
+</form>
+<br>
+<form action="rest/chooseGame" method="POST">
+    Game Id: <input id="gameIdVar" type="text" name="gameId" onkeyup="btnActivation('gameIdVar','chooseButton')">
+    <input type="submit" id="chooseButton" value="chooseGame" disabled/>
+</form>
+<br>
+<form action="rest/getGamesList" method="GET">
+    Get games List as Ids: <input type="submit" value="gameList" />
+</form>
+<br>
+<br>
+
+</body>
+</html>
